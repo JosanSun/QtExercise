@@ -8,7 +8,8 @@
 
 - IDE: Qt Creator 4.2.1
 
-	      Based on Qt 5.8.0 (MSVC 2015, 32bit)
+&emsp;&emsp;Based on Qt 5.8.0 (MSVC 2015, 32bit)
+
 - ±àÒëÆ÷ Microsoft Visual C++ Compiler 14.0 (amd64)
 
 - µ÷ÊÔÆ÷ cdb.exe

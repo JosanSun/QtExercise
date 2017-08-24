@@ -1,6 +1,6 @@
-# ignore user files
+ï»¿# ignore user files
 *.user
 
-# ºöÂÔÉú³ÉµÄÖĞ¼äÎÄ¼ş
+# å¿½ç•¥ç”Ÿæˆçš„ä¸­é—´æ–‡ä»¶
 
 **build**

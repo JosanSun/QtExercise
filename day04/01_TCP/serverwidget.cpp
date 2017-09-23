@@ -1,5 +1,5 @@
 #include "serverwidget.h"
-#include "ui_widget.h"
+#include "ui_serverwidget.h"
 
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
@@ -16,6 +16,7 @@ Widget::Widget(QWidget *parent) :
     tcpServer->listen(QHostAddress::Any, 8888);
 
     setWindowTitle("服务器： 8888");
+
     connect(tcpServer, &QTcpServer::newConnection,
             [=](){
         //取出建立好连接的套接字
@@ -31,7 +32,7 @@ Widget::Widget(QWidget *parent) :
                 [=](){
             //从通信套接字中的取出内容
             QByteArray array = tcpSocket->readAll();
-            ui->textEditRead->append(array);
+            ui->textEditRead->append(QString(array));
         });
     });
 
@@ -51,6 +52,7 @@ void Widget::on_buttonSend_clicked()
     QString str = ui->textEditWrite->toPlainText();
     //给对方发送数据，使用套接字是tcpSocket
     tcpSocket->write(str.toUtf8().data());
+    ui->textEditWrite->clear();
 }
 
 void Widget::on_buttonClose_clicked()

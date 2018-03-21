@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-08-24T18:42:07
+# Project created by QtCreator 2018-03-18T20:47:02
 #
 #-------------------------------------------------
 
@@ -23,12 +23,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += \
+        main.cpp \
+        mainwindow.cpp \
+    mywindow.cpp \
+    mywidget.cpp
 
-HEADERS  += mainwindow.h
+HEADERS += \
+        mainwindow.h \
+    mywindow.h \
+    mywidget.h
 
-FORMS    += mainwindow.ui
+FORMS += \
+        mainwindow.ui
 
 RESOURCES += \
-    image.qrc
+    testimage.qrc

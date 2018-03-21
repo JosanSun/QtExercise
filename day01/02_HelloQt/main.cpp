@@ -1,40 +1,27 @@
-﻿#include <QApplication>
+#include <QApplication>
 #include <QWidget>
 #include <QPushButton>
 
-int main(int argc, char** argv){
-
-
+int main(int argc, char* argv[])
+{
     QApplication app(argc, argv);
 
-
     QWidget w;
-    //设置标题
-    w.setWindowTitle(QString::fromLocal8Bit("主要看气质"));
+    // 默认窗口标题是生成的TARGET的名字
+    w.setWindowTitle(QObject::tr("主要看气质"));
+    w.show();
 
-
-
-    //注意此时，关闭窗口w以及按钮b才能正常结束程序
     QPushButton b;
     b.setText("^_^");
     b.show();
-    //可以多次显示show()
-    b.setText("123");
-    b.show();
 
-    //指定父对象，两种一个ctor，另一个通过成员函数
+    QPushButton* b1 = new QPushButton;
+    b1->setParent(&w);
+    b1->setText("Hello Qt");
+    b1->hide();       // NOTE:b1->show()  b1->hide()  对后面w.show()的影响
 
-    QPushButton b1;
-    b1.setText("@_@");
-    b1.setParent(&w);
-    b1.move(100, 100);
+    //w.update();
 
-    QPushButton b2(&w);
-    b2.setText("test");
-    b2.move(50, 50);
-    //b1.show();
-    //注意w.show()必须在这最后，如果在创建b1之前，就显示的话。之后，b1显示不出来。
-    w.show();
-
+    w.show();   //w.show()真正含义，是显示父对象以及子对象的默认值都设置为显示。（一般默认的都是隐藏）
     return app.exec();
 }

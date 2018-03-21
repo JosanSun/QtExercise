@@ -1,8 +1,4 @@
-#这是什么编码
-
-QT += widgets
+QT    += widgets
 
 SOURCES += \
     main.cpp
-
-CONFIG += qt

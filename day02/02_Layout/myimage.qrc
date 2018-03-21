@@ -1,7 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>rsc/inter.gif</file>
-        <file>rsc/tuzi.gif</file>
-        <file>rsc/ren.jpg</file>
-    </qresource>
-</RCC>

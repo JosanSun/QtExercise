@@ -1,22 +1,21 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-08-21T21:32:45
+# Project created by QtCreator 2018-03-16T21:57:48
 #
 #-------------------------------------------------
 
-# QT       += core gui
+QT       += core gui
 
-# greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = 01_QtTest
-#指定makefile的类型，app  其他：lib
-#TEMPLATE = app
+TARGET = 01_QTtest
+TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
 # deprecated API in order to know how to port your code away from it.
-# DEFINES += QT_DEPRECATED_WARNINGS
+DEFINES += QT_DEPRECATED_WARNINGS
 
 # You can also make your code fail to compile if you use deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -24,11 +23,9 @@ TARGET = 01_QtTest
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
-SOURCES +=\
-        mywidget.cpp \
-    main.cpp
+SOURCES += \
+        main.cpp \
+        mywidget.cpp
 
-HEADERS  += mywidget.h
-
-# CONFIG += C++11
-
+HEADERS += \
+        mywidget.h

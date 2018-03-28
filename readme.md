@@ -1,15 +1,15 @@
-# QTÁ·Ï°´úÂë
+# QTç»ƒä¹ ä»£ç 
 
-ÕâÀï´æ·Å¸öÈËÁ·Ï°QtÊ±ËùÓÃµÄ´úÂë
+è¿™é‡Œå­˜æ”¾ä¸ªäººç»ƒä¹ Qtæ—¶æ‰€ç”¨çš„ä»£ç 
 
-## »·¾³ËµÃ÷
+## çŽ¯å¢ƒè¯´æ˜Ž
 
-**»·¾³**£º
+**çŽ¯å¢ƒ**ï¼š
 
 - IDE: Qt Creator 4.2.1
 
 &emsp;&emsp;Based on Qt 5.8.0 (MSVC 2015, 32bit)
 
-- ±àÒëÆ÷ Microsoft Visual C++ Compiler 14.0 (amd64)
+- ç¼–è¯‘å™¨ Microsoft Visual C++ Compiler 14.0 (amd64)
 
-- µ÷ÊÔÆ÷ cdb.exe
+- è°ƒè¯•å™¨ cdb.exe

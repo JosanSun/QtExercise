@@ -57,6 +57,7 @@ void ClientWidget::on_buttonSend_clicked()
     QString str = ui->textEditWrite->toPlainText();
     //发送数据
     tcpSocket->write(str.toUtf8().data());
+    ui->textEditWrite->clear();
 }
 
 void ClientWidget::on_buttonClose_clicked()
@@ -67,5 +68,5 @@ void ClientWidget::on_buttonClose_clicked()
     //主动和对方断开连接
     tcpSocket->disconnectFromHost();
     tcpSocket->close();
-    tcpSocket = NULL;
+    //tcpSocket = NULL;
 }

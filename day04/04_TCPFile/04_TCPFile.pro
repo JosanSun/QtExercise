@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-09-20T22:06:42
+# Project created by QtCreator 2018-03-27T17:56:47
 #
 #-------------------------------------------------
 
@@ -26,14 +26,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         serverwidget.cpp \
-    clienwidget.cpp
+    clientwidget.cpp
 
 HEADERS += \
         serverwidget.h \
-    clienwidget.h
+    clientwidget.h
 
 FORMS += \
         serverwidget.ui \
-    clienwidget.ui
+    clientwidget.ui
 
-CONFIG += C++11
+CONFIG += c++11

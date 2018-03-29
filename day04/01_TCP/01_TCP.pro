@@ -1,11 +1,10 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-09-20T18:44:37
+# Project created by QtCreator 2018-03-25T15:29:19
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT += network
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,15 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-    serverwidget.cpp \
-    clientwidget.cpp
+        tcpserverwidget.cpp \
+    tcpclientwidget.cpp
 
 HEADERS += \
-    serverwidget.h \
-    clientwidget.h
+        tcpserverwidget.h \
+    tcpclientwidget.h
 
 FORMS += \
-    clientwidget.ui \
-    serverwidget.ui
-
-CONFIG += C++11
+        tcpserverwidget.ui \
+    tcpclientwidget.ui

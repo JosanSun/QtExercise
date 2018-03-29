@@ -1,14 +1,14 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2018-03-27T16:22:35
+# Project created by QtCreator 2018-03-27T16:56:55
 #
 #-------------------------------------------------
 
-QT       += core gui network
+QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = 02_UDP
+TARGET = 03_QTimer
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -25,13 +25,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        widget.cpp \
-    clientwidget.cpp
+        widget.cpp
 
 HEADERS += \
-        widget.h \
-    clientwidget.h
+        widget.h
 
 FORMS += \
-        widget.ui \
-    clientwidget.ui
+        widget.ui

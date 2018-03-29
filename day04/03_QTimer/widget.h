@@ -2,7 +2,7 @@
 #define WIDGET_H
 
 #include <QWidget>
-#include <QUdpSocket>
+#include <QTimer>
 
 namespace Ui {
 class Widget;
@@ -16,17 +16,14 @@ public:
     explicit Widget(QWidget *parent = 0);
     ~Widget();
 
-    void dealMsg();
-
 private slots:
-    void on_buttonSend_clicked();
+    void on_buttonStart_clicked();
 
-    void on_buttonClose_clicked();
+    void on_buttonStop_clicked();
 
 private:
     Ui::Widget *ui;
-
-    QUdpSocket* udpSocket;
+    QTimer* myTimer;
 };
 
 #endif // WIDGET_H

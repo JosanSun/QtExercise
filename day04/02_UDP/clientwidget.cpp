@@ -1,33 +1,28 @@
 #include <QHostAddress>
 
-#include "widget.h"
-#include "ui_widget.h"
+#include "clientwidget.h"
+#include "ui_clientwidget.h"
 
-Widget::Widget(QWidget *parent) :
+ClientWidget::ClientWidget(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Widget)
+    ui(new Ui::ClientWidget)
 {
     ui->setupUi(this);
 
-    setWindowTitle(tr("服务器端口：8888"));
+    setWindowTitle(tr("客户端端口：12345"));
 
     udpSocket = new QUdpSocket(this);
-    //udpSocket->bind(8888);
-    udpSocket->bind(QHostAddress::AnyIPv4, 8888);
+    udpSocket->bind(12345);
 
-    udpSocket->joinMulticastGroup(QHostAddress("224.0.0.2"));
-    //udpSocket->leaveMulticastGroup(QHostAddress("224.0.0.2"));
-
-
-    connect(udpSocket, &QUdpSocket::readyRead, this, &Widget::dealMsg);
+    connect(udpSocket, &QUdpSocket::readyRead, this, &ClientWidget::dealMsg);
 }
 
-Widget::~Widget()
+ClientWidget::~ClientWidget()
 {
     delete ui;
 }
 
-void Widget::dealMsg()
+void ClientWidget::dealMsg()
 {
     char buf[1024] = {0};
     QHostAddress address;
@@ -44,7 +39,7 @@ void Widget::dealMsg()
     }
 }
 
-void Widget::on_buttonSend_clicked()
+void ClientWidget::on_buttonSend_clicked()
 {
     QString ip = ui->lineEditIP->text();
     quint16 port = ui->lineEditPort->text().toInt();
@@ -54,7 +49,7 @@ void Widget::on_buttonSend_clicked()
 
 }
 
-void Widget::on_buttonClose_clicked()
+void ClientWidget::on_buttonClose_clicked()
 {
     udpSocket->disconnectFromHost();
     udpSocket->close();

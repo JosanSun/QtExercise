@@ -1,21 +1,20 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef CLIENTWIDGET_H
+#define CLIENTWIDGET_H
 
 #include <QWidget>
 #include <QUdpSocket>
 
 namespace Ui {
-class Widget;
+class ClientWidget;
 }
 
-class Widget : public QWidget
+class ClientWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Widget(QWidget *parent = 0);
-    ~Widget();
-
+    explicit ClientWidget(QWidget *parent = 0);
+    ~ClientWidget();
     void dealMsg();
 
 private slots:
@@ -24,9 +23,9 @@ private slots:
     void on_buttonClose_clicked();
 
 private:
-    Ui::Widget *ui;
+    Ui::ClientWidget *ui;
 
     QUdpSocket* udpSocket;
 };
 
-#endif // WIDGET_H
+#endif // CLIENTWIDGET_H

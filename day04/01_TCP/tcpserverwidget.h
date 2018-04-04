@@ -16,7 +16,7 @@ class TcpServerWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit TcpServerWidget(QWidget *parent = 0);
+    explicit TcpServerWidget(QWidget *parent = nullptr);
     ~TcpServerWidget();
 
 private slots:
@@ -26,10 +26,10 @@ private slots:
 
 private:
     bool isTextEditEmpty(const QPlainTextEdit* textEdit) const;
-    Ui::TcpServerWidget *ui;
+    Ui::TcpServerWidget *ui = nullptr;
 
-    QTcpServer* tcpServer;
-    QTcpSocket* tcpSocket;
+    QTcpServer* tcpServer = nullptr;
+    QTcpSocket* tcpSocket = nullptr;
 };
 
 #endif // TCPSERVERWIDGET_H

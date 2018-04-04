@@ -2,6 +2,8 @@
 #include <QPlainTextEdit>
 #include <QDebug>
 
+#define qcout qDebug()
+
 #include "tcpclientwidget.h"
 #include "ui_tcpclientwidget.h"
 
@@ -10,7 +12,7 @@ TcpClientWidget::TcpClientWidget(QWidget *parent) :
     tcpSocket(nullptr)
 {
     ui->setupUi(this);
-    setWindowTitle(tr("客户端"));
+    //setWindowTitle(tr("客户端"));
     move(700, 30);
     setFixedSize(400, 400);
 
@@ -30,6 +32,9 @@ TcpClientWidget::TcpClientWidget(QWidget *parent) :
                 quint16 port = tcpSocket->peerPort();
                 ui->plainTextEditRead->appendPlainText(tr("服务器的IP地址：%1\n端口号：%2\n")
                                             .arg(ip).arg(port));
+                ui->plainTextEditRead->appendPlainText(tr("本  机的IP地址：%1\n端口号：%2\n")
+                                                       .arg(tcpSocket->localAddress().toString())
+                                                       .arg(tcpSocket->localPort()));
             });
     connect(tcpSocket, &QTcpSocket::disconnected,
             [=]()
@@ -46,6 +51,11 @@ TcpClientWidget::~TcpClientWidget()
 
 void TcpClientWidget::on_pushButtonConnect_clicked()
 {
+    if(tcpSocket->isOpen())
+    {
+        qcout << "The server is already connected.\nDon't connect again.";
+        return ;
+    }
     QString ip = ui->lineEditIP->text();
     quint16 port = ui->lineEditPort->text().toInt();
     tcpSocket->connectToHost(QHostAddress(ip), port);
@@ -55,7 +65,7 @@ void TcpClientWidget::on_pushButtonSend_clicked()
 {
     if(!tcpSocket)
     {
-        qDebug() << "Client:tcpSocket is nullptr";
+        qcout << "Client:tcpSocket is nullptr";
         return;
     }
 
@@ -69,13 +79,13 @@ void TcpClientWidget::on_pushButtonSend_clicked()
         }
         else
         {
-            qDebug() << "Client:输入窗口为空。";
+            qcout << "Client:输入窗口为空。";
         }
     }
     else
     {
         // 这里也可以设置清空发送栏
-        qDebug() << "Client:tcpSocket is not nullptr, but is not open";
+        qcout << "Client:tcpSocket is not nullptr, but is not open";
     }
 }
 

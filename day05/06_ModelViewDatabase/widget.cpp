@@ -24,7 +24,7 @@ Widget::Widget(QWidget *parent) :
     db.setHostName("127.0.0.1");
     db.setUserName("root");
     db.setPassword("1234");
-    db.setDatabaseName("test01");
+    db.setDatabaseName("world");
 
     //打开数据库
     if(false == db.open()){
@@ -33,7 +33,7 @@ Widget::Widget(QWidget *parent) :
     }
     //设置模型
     model = new QSqlTableModel(this);
-    model->setTable("student");     //指定使用哪个表
+    model->setTable("country");     //指定使用哪个表
 
     //把model放在view
     ui->tableView->setModel(model);
@@ -42,8 +42,8 @@ Widget::Widget(QWidget *parent) :
     model->select();
 
     //设置标题显示内容，不会修改数据里面的内容
-    model->setHeaderData(0, Qt::Horizontal, "学号");
-    model->setHeaderData(1, Qt::Horizontal, "姓名");
+    //model->setHeaderData(0, Qt::Horizontal, "学号");
+    //model->setHeaderData(1, Qt::Horizontal, "姓名");
 
     //设置 model的编辑模式，手动提交修改
     model->setEditStrategy(QSqlTableModel::OnManualSubmit);

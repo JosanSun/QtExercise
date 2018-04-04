@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>test/test-ANSI.txt</file>
+        <file>test/test-GB2312.txt</file>
+        <file>test/test-utf8.txt</file>
+        <file>test/test-utf8-BOM.txt</file>
+    </qresource>
+</RCC>

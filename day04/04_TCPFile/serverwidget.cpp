@@ -80,7 +80,7 @@ void ServerWidget::on_buttonSend_clicked()
     }
     else
     {
-        qDebug() << "头部信息发送失败 110";
+        qcout << "头部信息发送失败 110";
         file.close();
         ui->buttonFile->setEnabled(true);
         ui->buttonSend->setEnabled(false);

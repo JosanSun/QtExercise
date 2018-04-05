@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>file/bigdata.txt</file>
+        <file>file/bigdata02.txt</file>
+        <file>file/longLine.txt</file>
+        <file>file/test03.txt</file>
+        <file>file/test04.txt</file>
+        <file>file/testFile-ANSI-win.txt</file>
+    </qresource>
+</RCC>

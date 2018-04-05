@@ -1,0 +1,112 @@
+总结：
+
+关于换行 
+---------
+符号      CR(carriage return)\r       LF(NL line feed, new line)  \n
+ANSI      13                        10 
+中文名    回车                      换行
+
+Windows的换行格式          CR  LF
+Unix的换行格式             LF
+MAC的换行格式              CR
+
+
+QT读取inFile   readAll()测试
+---------
+[关于Qt的QFile读取文件，在Windows系统下测试运行的]
+原来Windows的换行格式     转为 \n
+原来Unix   的换行格式     转为 \n
+原来Mac    的换行格式     转为 null, 直接忽略掉\r
+
+QT写入outFile   out<<
+---------
+[关于Qt的QFile写入文件，在Windows系统下测试运行的]
+主要看你写入时的换行的格式，保持写入的格式不变。
+
+如果是\r\n的话，转为\r\n
+如果是\n的话，转为\n
+如果是\r的话，转为\r
+
+
+
+【精华】关于换行符是否能够复制完全问题
+---------
+至于换行符改变，请参照上面说明。
+
+copy(), readAll(), read()可以完全复制文件。
+readLine()  必须配合控制函数，才能实现完全复制。
+实现代码
+inFile.copy("../test1.txt");
+
+outFile.write(inFile.readAll());
+
+while(!inFile.atEnd())
+{
+	QByteArray arr = inFile.read(3);
+	qcout << arr;
+	outFile.write(arr);
+}
+
+    QTextStream in(&inFile);
+    QTextStream out(&outFile);
+    QString line;    bool first = true;
+
+    while (!in.atEnd())
+    {
+        if(!first)
+        {
+            out << endl;
+        }
+        else
+        {
+            first = false;
+        }
+        line = in.readLine();
+        out << line;
+    }
+    if(line.isEmpty())
+    {
+        out << endl;
+    }
+
+
+
+
+
+关于QDebug()有时候会出现乱码的总结
+----------
+如果直接输出字符串字面值的话，
+qcout << "你好";   //就会出现乱码  可能原因，跟当前编写文件的编码方式有关，解码方式有关。
+
+qcout << tr("...");
+qcout << QStringLiteral("...");
+qcout << QString("...");
+QString str("...");
+qcout << str;  
+
+
+
+
+对于只读文件，如果你以写入的方式，打开文件
+-----------
+- 打开方式会出错。file.errorString()返回“拒绝访问”;
+- 如果是file.copy("../01.txt");  由于copy之后，产生的01.txt是只读文件，因此，你再次copy的时候，01.txt的文件内容是不变的。
+
+
+debug/qrc_test01.cpp Error - 1073741819
+---------------
+这个属于系统BUG,我暂时还没有找到解决方法。  临时解决办法就是将资源路径转为相对路径。
+
+关于文件的打开时间            
+---------------
+read()  跟 readLine() 的打开时间似乎相差不是很多。
+
+但是分块写入的速度，比直接写入的速度快。
+
+600MB的文件，   
+用read() 分3KB大小来读写的话，大约需要2.1s左右   其中读的时间：875ms
+用readAll() 直接读写的话，大约需要10s左右        其中读的时间：907ms
+
+对于6GB的文件
+用read() 分3KB大小来读写的话，大约需要162s左右    其中读的时间：58s
+用readAll() 无法正确读出来
